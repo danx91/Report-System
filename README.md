@@ -7,4 +7,4 @@ Report System is free to use addon for Garry's Mod. It was designed to be simple
 Download ZIP file, then extract it and put 'reports' folder into 'GarrysMod/garrysmod/addons' folder.
 
 ## Licence
-You can modify and redistribute this script, but you are not allowed to sell this script or its modified versions. You are allowed to derive financial benefits by using it. If you want to redistribute any version of that script or any other script that uses internaly this script, you have to redistribute it on same licence, that means your product should be free for everybody.
+You can modify and redistribute this script, but you are not allowed to sell this script or its modified versions. You are allowed to derive financial benefits by using it. If you want to redistribute any version of that script or any other script that uses internally this script, you have to redistribute it on same licence, that means your product should be free for everybody.
