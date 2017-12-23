@@ -28,7 +28,7 @@ ReportConfig.UseCommands = true --Shoud players be able to open report menu by c
 ReportConfig.ReportCommand = "!report" --Command which opens report window - default: '!report'
 ReportConfig.AdminCommand = "!reportadmin" --Command which opens admin window - default: '!reportadmin'
 
-ReportConfig.ReportDelay = 3 --After sending report player has to wiat this ammount of time before sending next report - default: '60'
+ReportConfig.ReportDelay = 90 --After sending report player has to wiat this ammount of time before sending next report - default: '60'
 
 ReportConfig.FileName = "save" --Name of file where reports are saved - default: 'Save'
 ReportConfig.AutoSave = 300 --This var means delay in seconds between reports auto saves - default: '300'
