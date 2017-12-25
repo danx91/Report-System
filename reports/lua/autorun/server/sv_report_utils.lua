@@ -140,7 +140,7 @@ local function CommandHandler( ply, cmd, args )
 		local password = args[2]
 
 		local result = false
-		if ReportConfig.PasswordRequired and ReportConfig.AdminPassword == password then
+		if !ReportConfig.PasswordRequired or ( ReportConfig.PasswordRequired and ReportConfig.AdminPassword == password ) then
 			result = CloseAll( ply, reason )
 		end
 
@@ -158,7 +158,7 @@ local function CommandHandler( ply, cmd, args )
 		local password = args[2]
 
 		local result = false
-		if ReportConfig.PasswordRequired and ReportConfig.AdminPassword == password then
+		if !ReportConfig.PasswordRequired or ( ReportConfig.PasswordRequired and ReportConfig.AdminPassword == password ) then
 			result = DeleteAll( ply, reason )
 		end
 
@@ -379,6 +379,7 @@ function DeleteAll( ply, reason )
 		num = num + 1
 	end
 	REPORTS = {}
+	ReportsAutoID = 0
 	--collectgarbage() ???
 	if num > 0 then
 		ReportLogAdmin( "Player "..ply:GetName().." deleted all ("..num..") reports. Reason: "..reason )
@@ -472,7 +473,7 @@ function ReportMsg( txt, plys )
 		plys = player.GetAll()
 	end
 	local chat = {
-		{ color = Color( 255, 75, 75, 255 ), text = "[REPORTS SYSTEM] " },
+		{ color = Color( 255, 75, 75, 255 ), text = "[REPORT SYSTEM] " },
 		{ color = Color( 255, 255, 255, 255 ), text = txt },
 	}
 	net.Start( "ReportLog" )
@@ -485,7 +486,7 @@ function ReportLogChat( txt, plys )
 		plys = player.GetAll()
 	end
 	local chat = {
-		{ color = Color( 255, 75, 75, 255 ), text = "[REPORTS SYSTEM]" },
+		{ color = Color( 255, 75, 75, 255 ), text = "[REPORT SYSTEM]" },
 		{ color = Color( 100, 200, 75, 255 ), text = "[LOG] " },
 		{ color = Color( 255, 255, 255, 255 ), text = txt },
 	}
@@ -497,11 +498,12 @@ end
 function ReportLogAdmin( txt )
 	local plys = GetAdmins()
 	local chat = {
-		{ color = Color( 255, 75, 75, 255 ), text = "[REPORTS SYSTEM]" },
+		{ color = Color( 255, 75, 75, 255 ), text = "[REPORT SYSTEM]" },
 		{ color = Color( 150, 100, 200, 255 ), text = "[ADMIN LOG] " },
 		{ color = Color( 255, 255, 255, 255 ), text = txt },
 	}
-	ServerLog( txt )
+	--ServerLog( txt )
+	WriteReportLog( txt )
 	net.Start( "ReportLog" )
 		net.WriteTable( chat )
 	net.Send( plys )
@@ -510,12 +512,13 @@ end
 function SilentReportLog( txt )
 	local plys = GetAdmins()
 	local chat = {
-		{ color = Color( 255, 75, 75, 255 ), text = "[REPORTS SYSTEM]" },
+		{ color = Color( 255, 75, 75, 255 ), text = "[REPORT SYSTEM]" },
 		{ color = Color( 150, 100, 200, 255 ), text = "[ADMIN LOG] " },
 		{ color = Color( 255, 255, 255, 255 ), text = txt },
 		silent = true,
 	}
-	ServerLog( txt )
+	--ServerLog( txt )
+	WriteReportLog( txt )
 	net.Start( "ReportLog" )
 		net.WriteTable( chat )
 	net.Send( plys )

@@ -11,7 +11,7 @@ ReportConfig.TimeFormat = "%H:%M - %d/%m/%Y (%A)" --http://wiki.garrysmod.com/pa
 ReportConfig.SuperAdmin = true --Is superadmins allowed to check reports? - default: 'true', recommended: 'true'
 ReportConfig.Admin = true --Is admins allowed to check reports? - default: 'true', recommended: 'true'
 ReportConfig.CustomGroups = { --Custom groups of players who can access reports. ULX compatible - default: '{}'
-	--Put here group names surrounded by " and separete them by , ( Example: "KidAdmin", "Moderator", "ReportGuy" )
+	--Put under this line groups names surrounded by " and separete them by , ( Example: "KidAdmin", "Moderator", "ReportGuy" )
 
 }
 
@@ -28,9 +28,12 @@ ReportConfig.UseCommands = true --Shoud players be able to open report menu by c
 ReportConfig.ReportCommand = "!report" --Command which opens report window - default: '!report'
 ReportConfig.AdminCommand = "!reportadmin" --Command which opens admin window - default: '!reportadmin'
 
-ReportConfig.ReportDelay = 3 --After sending report player has to wiat this ammount of time before sending next report - default: '60'
+ReportConfig.ReportDelay = 90 --After sending report player has to wiat this ammount of time before sending next report - default: '60'
 
-ReportConfig.FileName = "save" --Name of file where reports are saved - default: 'Save'
+ReportConfig.SaveFileName = "save" --Name of file where reports are saved - default: 'save'
 ReportConfig.AutoSave = 300 --This var means delay in seconds between reports auto saves - default: '300'
+
+ReportConfig.EnableLogs = true --Should server save logs? - default: 'true', recommended: 'true'
+ReportConfig.LogFileName = "log" --Name of file where logs are saved - default: 'log'
 
 --Languages --TODO
